@@ -5,11 +5,11 @@
   const FRAME_RATE = 60
   const PARTICLE_NUM = 2000
   const RADIUS = Math.PI * 2
-  const CANVASWIDTH = 800
-  const CANVASHEIGHT = 150
+  const CANVASWIDTH = 1000
+  const CANVASHEIGHT = 300
   const CANVASID = 'canvas'
 
-  let texts = ['老婆大人（吕婷婷）', '情人节快乐❤️', '永远年轻美丽', '2个宝宝也要乖乖的🐷', 'I LOVE YOU FOR EVER']
+  let texts = ['老婆大人（吕婷婷）', '情人节快乐❤️', '永远年轻美丽', '2个宝宝也要乖乖的🐷', 'I LOVE YOU FOR EVERY']
 
   let canvas,
     ctx,
@@ -17,7 +17,7 @@
     quiver = true,
     text = texts[0],
     textIndex = 0,
-    textSize = 70
+    textSize = 80
 
   function draw () {
     ctx.clearRect(0, 0, CANVASWIDTH, CANVASHEIGHT)
@@ -201,12 +201,17 @@
       }
     }
     draw (ctx) {
-      ctx.fillStyle = 'rgba(226,225,142, ' + this.opacity + ')'
+      // ctx.fillStyle = 'rgba(226,225,142, ' + this.opacity + ')'
+      ctx.fillStyle = `rgba(${randomColorItem()}, ${randomColorItem()}, ${randomColorItem()}, ${this.opacity})`
       ctx.beginPath()
       ctx.arc(this.x, this.y, this.size, 0, RADIUS, true)
       ctx.closePath()
       ctx.fill()
     }
+  }
+
+  function randomColorItem () {
+    return Math.round(255 * Math.random())
   }
   
   var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
